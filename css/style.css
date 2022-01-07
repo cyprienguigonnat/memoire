@@ -13,8 +13,7 @@
   --col-secondary: rgba(47, 62, 126, 1);
   --layout-gutter: clamp(1.5rem, 7vw, 6rem);
   font-size: 16px;
-  font-family: 'Inter', sans-serif;
-  
+  font-family: 'Inter', sans-serif;  
 }
 
 * {
@@ -28,6 +27,16 @@
   --col-primary: rgba(39, 169, 175, 1);
   --col-caption: rgba(102, 113, 163, 1);
   --col-secondary: rgba(218, 222, 241, 1);
+}
+
+::-moz-selection {
+  color: var(--color-bg);
+  background-color: var(--col-caption);
+}
+
+::selection {
+  color: var(--col-bg);
+  background-color: var(--col-caption);
 }
 
 /* Layout */
@@ -178,8 +187,9 @@ aside p + p {
 }
 
 footer {
-  grid-column: sections;
+  grid-column: main;
   margin-top: 3rem;
+  padding-left: 4rem;
   border-top: 1px solid var(--col-caption);
 }
 
@@ -295,11 +305,16 @@ a {
   text-decoration: none;
   word-break: break-all;
 }
+
+p a:hover {
+  border-bottom: 1px solid var(--col-primary); 
+}
+
 aside a:hover {
   border-bottom: 1px solid var(--col-primary); 
 }
 aside a::before {
-  content: "↗";
+  content: url("../media/arrow-up-right.svg");
   margin-right: 4px;
 }
 
@@ -307,7 +322,7 @@ figure a:hover {
   border-bottom: 1px solid var(--col-primary) !important; 
 }
 figure a::before {
-  content: "↗";
+  content: url("../media/arrow-up-right.svg");
   margin-right: 4px;
 }
 
@@ -363,7 +378,7 @@ em {
 
 /* Visual elements */
 figure {
-  margin: -5rem 2rem 2rem;
+  margin: -5rem 0rem 2rem;
   padding-top: 6rem;
 }
 #toFig12 {
@@ -400,7 +415,7 @@ figcaption {
   }
   aside {
     grid-column: content;
-    margin: 3rem 0;
+    margin: 1rem 0 3rem;
     padding-top: 1rem;
     border-top: 1px dashed var(--col-caption);
   }
@@ -408,10 +423,10 @@ figcaption {
 
 @media screen and (max-width: 767px) {
   main { 
-    gap: 0 2rem;
+    gap: 0 1rem;
   }
   figure {
-    margin: -3rem 2rem 2rem;
+    margin: -3rem 0 2rem;
     padding-top: 4rem;
   }
 }
