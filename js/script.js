@@ -1,4 +1,4 @@
-// 6) Changer de thème Jour/Nuit
+// 5) Changer de thème Jour/Nuit
 const switchTheme= () => {
   const btn = document.getElementById("themeSwitch");
   const btnLabel = btn.nextElementSibling;
@@ -13,34 +13,41 @@ const switchTheme= () => {
   });
 };
 
-// 5) Affiche le pourcentage de scroll
- const setProgress = () => {
-   const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-   const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-   const scrollProgress = Math.floor((winScroll / height) * 100);
-   document.getElementById("progress").textContent = `${scrollProgress}%`;
- }
+// 4) Affiche le pourcentage de scroll
+const setProgress = () => {
+  const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrollProgress = Math.floor((winScroll / height) * 100);
+  document.getElementById("progress").textContent = `${scrollProgress}%`;
+}
 
-// 4) Colorer les chips du sommaire en fonction d'où on est dans la page
- function checkVisible(elm) {
-   var rect = elm.getBoundingClientRect();
-   var viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
-   return !(rect.bottom < 0 || rect.top - viewHeight >= -5);
- }
+// 3) Colorer les chips du sommaire en fonction d'où on est dans la page
+window.onscroll = function() {
+  setProgress();
+  
+  var menuItems = document.querySelectorAll('.contents a');
 
- var myDiv = document.getElementById('ch_1');
- if(checkVisible(myDiv)) {
- // si ma div avec l'id myDiv est visible, donc ...
-// oDomElement.style.color = "rgba(46, 197, 204, 1)";
- } else {
- // si elle n'est pas visible, ...
-// oDomElement.style.color = "rgba(255, 255, 255, 1)";
- }
+  menuItems.forEach(function(menuItem) {
+    console.log(menuItem.getAttribute('data-id'));
 
+    let anchorId = menuItem.getAttribute('data-id');
+    let anchor = document.getElementById(anchorId);
+
+    if (anchor) {
+
+      if(anchor.offsetTop - window.scrollY <= 256) {
+        menuItems.forEach(function(_menuItem) {
+          _menuItem.classList.remove('current');
+        });
+
+        menuItem.classList.add('current');
+      }
+    }
+  })
+}
 
 // 2) Regroupe et exécute les différentes fonctions
 const init = () => {
-  window.onscroll = () => setProgress();
   switchTheme();
 }
 

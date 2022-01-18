@@ -92,7 +92,8 @@ nav {
 .contents a:hover {
   border-radius: 16px;
 }
-.contents a:active {
+.contents a:active,
+.contents a.current {
   color: var(--col-bg);
   background-color: var(--col-text);
 }
@@ -129,7 +130,7 @@ nav {
   transition: transform 0.5s ease-out; 
 }
 .th-light .themeSwitcher i {
-  transform: rotateY(180deg);
+  transform: rotateZ(180deg);
 }
 .themeSwitcher input {
   display: none; 
@@ -404,7 +405,7 @@ figcaption {
 
 @media screen and (min-width: 1024px) {
   section.exception-trst {
-    margin-bottom: -6rem;
+    margin-bottom: -2rem;
   }
 }
 
