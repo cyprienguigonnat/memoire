@@ -385,6 +385,9 @@ figure {
   margin: -5rem 0rem 2rem;
   padding-top: 6rem;
 }
+#toFig5 {
+  pointer-events: none;
+}
 #toFig12 {
   pointer-events: none;
 }
