@@ -397,7 +397,6 @@ figure {
 
 img {
   max-width: 100%;
-  border-radius: 4px;
 }
 
 figcaption { 
@@ -433,6 +432,9 @@ figcaption {
 }
 
 @media screen and (max-width: 767px) {
+  header {
+    padding: 7rem 0 3rem;
+  }
   main { 
     gap: 0 1rem;
   }
@@ -443,7 +445,13 @@ figcaption {
 }
 
 @media screen and (max-width: 600px) {
-  h1 { hyphens: auto; }
+  h1 { 
+    hyphens: auto;
+    font-size: 2.25em;
+  }
+  h2 {
+    font-size: 1.25em;
+  }
 }
 
 /* Scrollbar */
